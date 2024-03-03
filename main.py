@@ -2,6 +2,7 @@
 
 # Importation de la bibliothèque random
 import random
+import time
 
 # Fonction pour vérifier si un joueur a gagné avec une ligne complète
 def verif_gagne_ligne(grille_jeux):
@@ -137,10 +138,14 @@ while en_jeu != 'N' and en_jeu != 'n':
 
     # Appel de la fonction pour le joueur 2
     grille_jeux = j2_ia(grille_jeux)
+    print('L\'ordinateur a joué :')
+    time.sleep(0.5)
+
 
     # Affichage de la grille de jeux
     for i in range(3):
         print(grille_jeux[i])
+
     # Vérification si un joueur a gagné
     if verif_gagne_ligne(grille_jeux) or verif_gagne_colonne(grille_jeux) or verif_gagne_diagonale(grille_jeux):
         print(f'Félicitations, vous avez gagné !')
