@@ -75,20 +75,53 @@ def j2_ia(grille_jeux):
             grille_jeux[0][i] = 'O'
             return grille_jeux
 
-        if grille_jeux[0][0] == grille_jeux[1][1] == 'O' and grille_jeux[2][2] == '':
-            grille_jeux[2][2] = 'O'
+        if grille_jeux[i][0] == grille_jeux[i][1] == 'O' and grille_jeux[i][2] == '':
+            grille_jeux[i][2] = 'O'
             return grille_jeux
 
-        if grille_jeux[0][0] == grille_jeux[2][2] == 'O' and grille_jeux[1][1] == '':
+        if grille_jeux[i][0] == grille_jeux[i][2] == 'O' and grille_jeux[i][1] == '':
+            grille_jeux[i][1] = 'O'
+            return grille_jeux
+
+        if grille_jeux[i][1] == grille_jeux[i][2] == 'O' and grille_jeux[i][0] == '':
+            grille_jeux[i][0] = 'O'
+            return grille_jeux
+
+        if grille_jeux[0][i] == grille_jeux[1][i] == 'X' and grille_jeux[2][i] == '':
+            grille_jeux[2][i] = 'O'
+            return grille_jeux
+        if grille_jeux[0][i] == grille_jeux[2][i] == 'X' and grille_jeux[1][i] == '':
+            grille_jeux[1][i] = 'O'
+            return grille_jeux
+        if grille_jeux[1][i] == grille_jeux[2][i] == 'X' and grille_jeux[0][i] == '':
+            grille_jeux[0][i] = 'O'
+            return grille_jeux
+        if grille_jeux[i][0] == grille_jeux[i][1] == 'X' and grille_jeux[i][2] == '':
+            grille_jeux[i][2] = 'O'
+            return grille_jeux
+        if grille_jeux[0][0] == grille_jeux[2][2] == 'X' and grille_jeux[1][1] == '':
             grille_jeux[1][1] = 'O'
             return grille_jeux
-
-        if grille_jeux[1][1] == grille_jeux[2][2] == 'O' and grille_jeux[0][0] == '':
+        if grille_jeux[0][2] == grille_jeux[2][0] == 'X' and grille_jeux[1][1] == '':
+            grille_jeux[1][1] = 'O'
+            return grille_jeux
+        if grille_jeux[1][1] == grille_jeux[2][2] == 'X' and grille_jeux[0][0] == '':
             grille_jeux[0][0] = 'O'
             return grille_jeux
-        if plein(grille_jeux) is True:
+        if grille_jeux[0][0] == grille_jeux[1][1] == 'X' and grille_jeux[2][2] == '':
+            grille_jeux[2][2] = 'O'
             return grille_jeux
+        if grille_jeux[0][2] == grille_jeux[1][1] == 'X' and grille_jeux[2][0] == '':
+            grille_jeux[2][0] = 'O'
+            return grille_jeux
+        if grille_jeux[1][1] == grille_jeux[2][0] == 'X' and grille_jeux[0][2] == '':
+            grille_jeux[0][2] = 'O'
+            return grille_jeux
+    # Vérification des diagonales pour gagner ou bloquer
 
+
+        if plein(grille_jeux) is True:
+            return 'Match nul'
     # Si aucune possibilité de gagner ou bloquer, jouer aléatoirement
     while True:
         pion_j2_ligne = random.randint(0, 2)
